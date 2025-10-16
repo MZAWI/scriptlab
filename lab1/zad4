@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ -z $1 || -z $2 ]]; then
+if [[ $# != 2 ]]; then
 	echo "$0: invalid arguments" > /dev/stderr
 	exit 1
 fi
