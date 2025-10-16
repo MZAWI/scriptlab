@@ -1,0 +1,23 @@
+#!/bin/bash
+FILE=panTadeusz.txt
+if ! [[ -f $FILE ]]; then
+	echo "$0: No such file or directory: $FILE" > /dev/stderr
+	exit 1
+fi
+
+echo -e "a)"
+WLF=$(wc -wl panTadeusz.txt)
+
+echo -e "linie\tsłowa"
+echo ${WLF% *} | sed 's/ /\t/g'
+
+echo -e "\nb)"
+NLITW=$(grep -iEc "\blitw.[^n]" panTadeusz.txt)
+echo "Ilość odmian słowa litwa w tekście: $NLITW"
+
+echo -e "\nc)"
+echo "Najczęściej wymieniane słowa w pliku zaczynające się na dużą literę: "
+cat $FILE | tr -d '[:punct:]' | tr '[:space:]' "\n" | grep -e "[[:upper:]]" | sort | uniq -c | sort -nr | head -n 20
+
+echo -e "\nd)"
+grep -Eni '\bojczyz' panTadeusz.txt | sed -E 's/\b(ojczyzn.{0,3})\b/\U\1/gI'

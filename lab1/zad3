@@ -1,0 +1,20 @@
+#!/bin/bash
+
+FILE=przykladowy_log.log
+if ! [[ -f $FILE ]]; then
+	echo "$0: no such file or directory: $FILE" > /dev/stderr
+	exit 1
+fi
+
+echo "a)"
+# cat $FILE | awk '{gsub(/:/, "", $4)} {print "timestamp:"$1 " " $2 " " $3"\thost:" $4 "\tuser:" $5 "\tadres_ip:" $6}'
+DATE=$(date "+%a %d %H:%M:%S")
+HOST=$(cat /proc/sys/kernel/hostname)
+USER=$(whoami)
+INET_ADDR=$(ifconfig | awk '/inet / {print $2}' | head -n 1)
+echo "timestamp:$DATE, host:$HOST, user:$USER, adres_ip:$INET_ADDR"
+
+
+echo -e "\nb)"
+printf "%7s\t%s\n" "ilosc" "nazwa"
+cat $FILE | awk '{print $5}' | sort | uniq -c

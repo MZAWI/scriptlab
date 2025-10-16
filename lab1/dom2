@@ -1,0 +1,10 @@
+#!/bin/bash
+
+TIMESTAMP=$(date "+%a %Y-%m-%d %H:%M:%S")
+CPULOAD=$(top -b | head -1 | awk '{ print $10 }' | tr -d ",")
+MEMUSED=$(free -m  | awk '/^Mem/ {print $3}')
+MEMFREE=$(free -m  | awk '/^Mem/ {print $4}')
+USERS=$(users)
+PROCESSES=$(top -b -n 1 -o "%CPU" | head -n 12 | tail -n 5 | awk '{print $12}' | tr '\n' ' ')
+
+echo "$TIMESTAMP,$CPULOAD,$MEMUSED,$MEMFREE,$USERS,$PROCESSES"

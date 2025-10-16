@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if [[ -z $1 || -z $2 ]]; then
+	echo "$0: invalid arguments" > /dev/stderr
+	exit 1
+fi
+
+DIR=$1
+if ! [[ -d $DIR ]]; then
+	echo "$0: no such file or directory: $DIR" > /dev/stderr
+	exit 2
+fi
+
+NCHANGED=0
+RAPORT=$(pwd)/$2
+
+cd $DIR
+shopt -s extglob # extended globbing
+FOUND=(!(*.sh))
+NFOUND="${#FOUND[@]}"
+
+for FILE in "${FOUND[@]}"; do
+	SIZE=$(ls -l --block-size=K "$FILE" | awk '{print $5}' | tr -d "K")
+	LINE="$FILE,$SIZE,"
+	[[ -x $FILE ]] && chmod -x $FILE && LINE+="x" && ((++NCHANGED)) || LINE+="brak_x"
+	echo $LINE >> $RAPORT
+done
+
+echo "Znaleziono: $NFOUND"
+echo "Zmieniono: $NCHANGED"
+

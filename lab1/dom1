@@ -1,0 +1,16 @@
+#!/bin/bash
+
+FILE=panTadeusz.txt
+KSIEGI=( "pierwsza" "druga" "trzecia" "czwarta" "piąta" "szósta" "siódma" "ósma" "dziewiąta" "dziesiąta" "jedenasta" "dwunasta" )
+
+for KSIEGA in ${!KSIEGI[@]}; do
+	case $KSIEGA in
+		11)
+			sed -n "/Księga ${KSIEGI[KSIEGA]}/,\$ p" $FILE > ${KSIEGI[KSIEGA]}.txt;;
+		*)
+			sed -n "/Księga ${KSIEGI[KSIEGA]}/,/Księga ${KSIEGI[KSIEGA+1]}/p" $FILE | sed '$d' > ${KSIEGI[KSIEGA]}.txt;;
+	esac
+done
+
+# sed -n '/Księga pierwsza/,/Księga druga/p' panTadeusz.txt | sed '$d'
+
