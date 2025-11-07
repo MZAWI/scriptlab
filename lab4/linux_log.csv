@@ -1,0 +1,10 @@
+timestamp,IP,user,status,process
+2025-09-28 09:00:10,192.168.0.5,root,FAILED,sshd
+2025-09-28 09:00:40,192.168.0.6,admin,FAILED,sshd
+2025-09-28 09:01:00,192.168.0.8,guest,OK,cron
+2025-09-28 09:01:30,192.168.0.5,root,OK,sudo
+2025-09-28 09:02:00,10.0.0.3,anna,FAILED,sshd
+2025-09-28 09:02:15,10.0.0.3,anna,FAILED,sshd
+2025-09-28 09:02:30,192.168.0.6,admin,OK,sshd
+2025-09-28 09:02:45,192.168.0.5,root,FAILED,sshd
+2025-09-28 09:03:00,192.168.0.8,guest,OK,ftp

@@ -1,0 +1,8 @@
+timestamp,IP,username,event,application
+2025-09-28 09:00:11,192.168.0.5,Administrator,LoginFailed,RemoteDesktop
+2025-09-28 09:00:43,192.168.0.6,Admin,LoginFailed,RemoteDesktop
+2025-09-28 09:01:03,192.168.0.8,Guest,LoginSuccess,Explorer
+2025-09-28 09:01:33,192.168.0.5,Administrator,LoginSuccess,RemoteDesktop
+2025-09-28 09:02:05,10.0.0.3,Anna,LoginFailed,RemoteDesktop
+2025-09-28 09:02:40,192.168.0.6,Admin,LoginSuccess,RemoteDesktop
+2025-09-28 09:03:05,192.168.0.8,Guest,LoginFailed,SMB

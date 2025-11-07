@@ -1,0 +1,92 @@
+Zadanie 1.
+Napisz skrypt który:
+1. kopiuje pliki o podanym rozszerzeniu wybranego katalogu do innego katalogu
+2. zmienia ich nazwy na <nazwa_pliku>_bak.<rozszerzenie>
+3. skrypt powinien przyjmować 3 argumenty: katalog źródłowy, katalog docelowy, rozszerzenie plików do skopiowania
+4. obsłuż wyjątki, jeśli katalog źródłowy nie istnieje lub nie podano odpowiedniej liczby argumentów
+5. jeśli katalog docelowy nie istnieje, utwórz go
+6. jeśli docelowy plik już istnieje, nie nadpisuj go
+7. skrypt powinien działać niezależnie od wielkości liter w rozszerzeniu (np. .TXT, .txt, .TxT to to samo)
+8. na koniec podaj raport ile plików zostało skopiowanych oraz nazwy plików które zostały pominięte bo już istniały
+9. Uzyj bibliotek sys, shutil, pathlib
+
+Zadanie 2.
+Napisz skrypt który:
+1. Wczytuje z klawiatury imiona i wyniki studentów z testu (0 - 100 punktów). Minium 5 osób
+1a. Sprawdza czy podany wynik jest z zakresu 0 - 100
+2. Dane przechowuje w liście słowników
+3. Po wprowadzeniu "koniec" jako imienia kończy wprowadzanie danych.
+4. Wyświetla średni wynik testu
+5. Wypisuje ilu studentów zdało test (>= 50 punktów)
+6. Wypisuje imiona wraz z wynikiem dla 3 studentów którzy uzyskali najwyższy wynik
+7. Dla każdego wyniku z testu przypisze ocenę według skali:     
+   90-100: 5  
+   80-89: 4.5
+   70-79: 4
+   60-69: 3.5
+   50-59: 3
+   <50: 2
+8. Wyświetla imię i ocenę każdego studenta
+
+Zadanie 3.
+Napisz skrypt, który wykorzytując biblioteke pandas wykona następujące zadania:
+1. Wczyta plik CSV z logami app_log.csv, zawierający serwerowe logi aplikacji webowej o następującym formacie:
+    timestamp,user,endpoint,status_code
+    2025-09-28 09:00:12,anna,/login,200
+    2025-09-28 09:00:35,bartek,/login,401
+    ...
+2. Policzy, ilu użytkowników wykonywało żądania do endpointu /login.
+3. Obliczy ilość żądań z błędem (status_code różny od 200) dla każdego użytkownika.
+4. Stworzy tabelę przestawną (pivot table): index: user; kolumny: status_code, wartości: liczba żądań
+5. Posortuje użytkowników wg liczby błędnych żądań malejąco.
+5a. Narysuje wykres słupkowy pokazujący liczbę błędnych żądań na użytkownika.
+6. Wyznaczy godziny największego ruchu (z resample('1min').size())
+
+Zadanie 4.
+Napisz skrypt, który wykorzytując biblioteke pandas wykona następujące zadania:
+1. Wczyta plik CSV z logami logowania:
+ - server_A.csv (kolumny: timestamp, IP, user, action) 
+    timestamp,IP,user,action
+    2025-09-28 09:00:00,192.168.0.6,edward,LOGIN_FAIL
+    2025-09-28 09:00:14,192.168.0.5,celina,LOGIN_OK
+    ...
+  - server_B.csv (kolumny: timestamp, IP, username, event)
+    timestamp,IP,username,event
+    2025-09-28 09:00:00,192.168.0.6,Bartek,LoginFailed
+    2025-09-28 09:00:31,192.168.0.6,Anna,LoginSuccess
+    ...
+2. Znajdzie wspólne adresy IP występujące w obu logach.
+3. Dla wspólnych adresów IP dopasuje zdarzenia logowania na podstawie czasu (±5 sekund).
+4. Wyznaczy przypadki, gdy oba systemy zgłosiły błąd logowania dla tego samego IP.
+5. Sporządzi statystyki błędów wg adresu IP.
+6. Sprawdzi, które adresy IP miały najwięcej korelacji błędów w obu systemach.
+7. Poda nazwy użytkowników z obu systemów dla tych samych IP i błędów logowania.
+
+Zadanie 5.
+Napisz skrypt, który wykorzytując biblioteke pandas wykona następujące zadania:
+1. Wczyta 3 pliki CSV z logami:
+ - linux_log.csv:
+    timestamp,IP,user,status,process
+    2025-09-28 09:00:10,192.168.0.5,root,FAILED,sshd
+    2025-09-28 09:01:00,192.168.0.8,guest,OK,cron
+    ...
+ - windows_log.csv:
+    timestamp,IP,username,event,application
+    2025-09-28 09:00:11,192.168.0.5,Administrator,LoginFailed,RemoteDesktop
+    2025-09-28 09:01:03,192.168.0.8,Guest,LoginSuccess,Explorer
+    ...
+ - web_log.csv:
+    timestamp,IP,user_web,endpoint,status_code
+    2025-09-28 09:00:15,192.168.0.5,root,/login,401
+    2025-09-28 09:01:05,192.168.0.8,guest,/login,200
+    ...
+2. Wczyta wszystkie 3 pliki
+3. Znajdzie wspólne adresy IP występujące we wszystkich logach.
+4. Używając merge_asof() połączy linux_log i windows_log po:
+ - on='timestamp',
+ - by='IP',
+ - direction='nearest',
+ - tolerance='10s'.
+5. Dołączy dane z web_log w ten sam sposób.
+6. Wyświetli wynikowe korelacje – czy dane IP generują błędy w więcej niż jednym systemie?
+7. Dla procesu 'sshd' i adresu IP= 192.168.0.6 w linux_log powodującego błędy, sprawdzi czy to samo IP generuje błędy logowania w windows_log i web_log w przedziale czsu +-30 sekund.
