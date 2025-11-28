@@ -1,0 +1,96 @@
+/* Sekcja HERO */
+.hero {
+    height: 20vh;
+    background: linear-gradient(120deg, #fb4934, #fabd2f);
+}
+
+::selection {
+    background: #fb4934
+}
+
+a {
+    color: #fb4934;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+h2 {
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+
+/* Linki w liście */
+#linki a {
+    text-decoration: none;
+    background-color: #1d2021;
+    border-color: #928374;
+    color: #fb4934;
+    font-weight: 500;
+}
+
+#linki a:hover {
+    background-color: #fb4934;
+    color: #ebdbb2;
+}
+
+/* #linki a:hover { */
+/* text-decoration: underline; */
+/* } */
+.card-title {
+    color: #fabd2f;
+}
+
+.card-text {
+    color: #ebdbb2;
+}
+
+.card-body {
+    color: #282828;
+}
+
+.bg-card {
+    background-color: #32302f;
+    border-color: #928374
+}
+
+.card-hover {
+    transition: transform .3s ease;
+}
+
+.card-hover:hover {
+    transform: scale(1.05);
+}
+
+.bg-dark-custom {
+    background-color: #1d2021;
+}
+
+body {
+    color: #ebdbb2;
+    background-color: #282828;
+}
+
+.navbar-dark {
+    color: #ebdbb2
+}
+
+.navbar .nav-link {
+    color: #ebdbb2;
+}
+
+.btn {
+    background-color: #ebdbb2;
+    color: #282828
+}
+
+.btn:hover {
+    background-color: #fb4934;
+}
+
+.navbar .navbar-brand {
+    color: #ebdbb2;
+    font-weight: bold;
+}
