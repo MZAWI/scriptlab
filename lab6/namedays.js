@@ -6,8 +6,9 @@ export async function fetchNamedaysPL(){
 
         return await response.json();
     } catch (error) {
-        console.error("Error: ", error);
-        return null;
+        const response = await fetch("./DanePogoda_Zajęcia-6.json");
+        const warnings = await response.json();
+        return localWarnings;
     }
 }
 
