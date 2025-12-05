@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Projekt – Etap 2: HTML, CSS, Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+    <div class="p-4 bg-white shadow rounded">
+
+        <h1 class="mb-4 text-center">Projekt – Etap 2<br><small class="text-muted">JavaScript</small></h1>
+
+        <p class="lead" style="color: blue; text-align: center;">
+            Celem drugiego etapu projektu jest uzupłenienie przygotowanej na poprzednich zajęciach, strony osobistej 
+            z wykorzystaniem <strong>JavaScriptu</strong>.<br> 
+            Na tym etapie dodajemy interaktywne elementy i dynamiczne dane pobierane z bezpłatnego API.
+        </p>
+
+        <hr class="my-4">
+
+        <h3>🎯 Cele Etapu 2 - Zajęcia 6</h3>
+        <ul>
+            <li>Rozbudowanie strony osobistej o elementy JavaScript.</li>
+            <li>Dodanie trybu ciemnego.</li>
+            <li>Dodanie treści kartki z kalendarza.</li>
+            <li>Wypełnienie sekcji „Pogoda”.</li>
+            <li>Dodanie nowej sekcji umożliwiającej dodawanie linków.</li>
+        </ul>
+
+        <hr class="my-4">
+
+        <h3>📁 Pliki dostarczone na start</h3>
+        <ul>
+            <li><strong>utils.js</strong> – moduł zawierający funkcje do wykorzystania w projekcie: sprawdzenie URL, obsługa localStorage.</li>
+            <li><strong>main.js</strong> – główny skrypt uruchamiający aplikację, w którym importujemy i wywołujemy funkcje z opracowanych na zajęciach modułów.</li>
+        </ul>
+
+        <hr class="my-4">
+
+        <h3>✅ Wymagania szczegółowe</h3>
+        <ol>
+            <li>
+                <strong>Założenia ogólne:</strong>
+                <ul>
+                    <li>Modyfikacje DOM wykonać z wykorzystanie metod JS: createElement oraz append. Nie używać innerHTML.</li>
+                    <li>Link do skryptu main.js w pliku HTML dodajemy w sekcji <code>head</code> z atrybutem <code>type="module"</code> oraz <code>defer</code>.</li>
+                    <li>Zrealizować wymaganiia projektu rozbijając logikę na moduły: weather.js, warnings.js, namedays.js, links.js.</li>
+                    <li>Zapewnić, że wszystkie moduły działają poprawnie po zaimportowaniu.</li>
+                </ul>
+            <li>
+                <strong>Dodanie trybu ciemnego:</strong>
+                <ul>
+                    <li>Umieścić pod paskiem nawigacji przycisk "Tryb: jasny/ciemny"</li>
+                    <li>Utworzyć funkcję JavaScript przełączającą tryb.</li>
+                    <li>Zapisać preferencję użytkownika w localStorage.</li>
+                </ul>
+            </li>
+
+            <li class="mt-3">
+                <strong>Uzupełnienie sekcji „Pogoda”.</strong>
+                <ul>
+                    <li>Skorzystać z bezpłatnego API Open-Meteo (https://danepubliczne.imgw.pl/api/data/synop/station/${city}).</li>
+                    <li>Pobrać i wyświetlić aktualną temperaturę oraz prognozę na dziś. Podaj: nazwę stacji, Wiatr, Ciśnienie., Wilgotność, Sumę opadów.</li>
+                    <li>Ewentualnie dodać ikonę pogody odpowiednią do warunków atmosferycznych.</li>
+                    <li>Dane pogodowe powinny być odświeżane co 30 minut.</li>
+                </ul>
+            </li>
+
+            <li class="mt-3">
+                <strong>Rozbudowanie sekcji „Kartka z Kalendarza”.</strong>
+                <ul>
+                    <li>Wyświetlić datę oraz dzień tygodnia.</li>
+                    <li>Skorzystać z API do pobrania informacji o imieninach (https://nameday.abalin.net/api/V2/today?timezone=UTC)</li>
+                    <li>Pobrać i wyświetlić kto obchodzi imieniny.</li>
+                    <li>Imiona wyświetlić z wykorzytstaniem komponentu "badge" Bootstrap.</li>
+                </ul>
+            </li>
+
+            <li class="mt-3">
+                <strong>Rozbudowanie sekcji „Aktulanie informacje” o kafelek wyświetlający ostrzeżenia meteorologiczne.</strong>
+                <ul>
+                    <li>Skorzystać z bezpłatnego API Open-Meteo (https://danepubliczne.imgw.pl/api/data/warningsmeteo).</li>
+                    <li>Pobrać i wyświetlić ostrzeżenia meteorologiczne.</li>
+                    <li>Wyświetlić wszystkie pobrane z API informacje.</li>
+                    <li>Podać liczbę powiatów objętych ostrzeżeniami (wielkość tablicy o kluczu "teryt").</li>
+                    <li>Jeśli brak ostrzeżeń, wyświetlić odpowiedni komunikat.</li>
+                </ul>
+            </li>
+
+            <li class="mt-3">
+                <strong>Dodanie nowej sekcji "Dodawanie nowych linków".</strong>
+                <ul>
+                    <li>Pod sekcją "Moje zainteresowania" dodaj nową sekcję z listą linków.</li>
+                    <li>Utwórz formularz z polem tekstowym dla opisu linku oraz polem typu url dla podania adresu.</li>
+                    <li>W tym samym formularzu dodaj przycisk (typu "button") "Sprawdź URL".</li>
+                    <li>Przycisk "Sprawdź URL" powinien sprawdzać czy URL jest poprawny; wykorzystaj funkcję z pliku utils.js.</li>                    
+                    <li>Pod formularzem umieść przycisk "Dodaj do listy".</li>
+                    <li>Po kliknięciu przycisku "Dodaj do listy", dodaj wprowadzone dane do listy wyświetlanej poniżej.</li>
+                    <li>Każdy link na liście powinien być klikalny i otwierać się w nowej karcie.</li>
+                    <li>Walidacja formularza przeprowadzona przy dodawaniu do listy. Sprawdzić należy: opis linku min. 3 znaki, poprawny URL (inputURL.checkValidity()).</li>
+                </ul>
+            </li>
+
+            <li class="mt-3">
+                <strong>Dodanie nowej sekcji "Lista linków".</strong>
+                <ul>
+                    <li>Bezpośrednio pod sekcją "Dodawanie nowych linków" utwórz kolejną sekcję z listą linków.</li>
+                    <li>Każdy element na liście zawiera wprowadzone dane: opis linku oraz link, który powinien być klikalny i otwierać się w nowej karcie.</li>
+                    <li>W tej samej linii wraz z danymi dodać przycisk "Usuń" do usuwania linku z listy.</li>
+                    <li>Lista powinna być dynamicznie aktualizowana po dodaniu lub usunięciu linku.</li>
+                </ul>
+            </li>
+
+        </ol>
+
+        <hr class="my-4">
+        <h3>🖼️ Przykładowy wygląd wynikowej strony:</h3><br><br>
+        <img src="./Strona.png" alt="Przykład strony" style="max-width: 100%; height: auto;">
+        <br><br>
+
+        <hr class="my-4">
+        <h3>🏠 Praca domowa</h3>
+        <ul>
+            <li>Dokończ stylowanie całej strony.</li>
+            <li>Upewnij się, że strona jest w pełni responsywna.</li>
+            <li>Zapisz listę linków w localStorage i załaduj je przy starcie strony.</li>
+        </ul>
+
+    </div>
+</div>
+
+</body>
+</html>

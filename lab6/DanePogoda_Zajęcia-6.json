@@ -1,0 +1,12 @@
+{
+  "id_stacji": "12560",
+  "stacja": "Katowice",
+  "data_pomiaru": "2025-11-28",
+  "godzina_pomiaru": "9",
+  "temperatura": "-3.9",
+  "predkosc_wiatru": "2",
+  "kierunek_wiatru": "90",
+  "wilgotnosc_wzgledna": "97.0",
+  "suma_opadu": "0",
+  "cisnienie": "1025.1"
+}
