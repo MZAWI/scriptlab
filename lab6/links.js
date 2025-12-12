@@ -13,7 +13,7 @@ export async function initLinksForm() {
         { text: "Fighting AI scrapbots", url: "https://lwn.net/Articles/1008897/" }
     ];
 
-   if (localStorage.getItem("links") === null) {
+   if (localStorage.getItem("links") === null ) {
         localStorage.setItem("links", JSON.stringify(defaultLinks));
     }
 
@@ -65,11 +65,22 @@ export async function initLinksForm() {
         h5.className = "mb-1";
         h5.append(desc);
 
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "btn"; // Red, small button
+        deleteBtn.innerHTML = "Usuń link"; 
+        deleteBtn.title = "Usuń link";
+        deleteBtn.addEventListener("click", (event) => {
+            event.preventDefault(); // Prevent link navigation
+            event.stopPropagation(); // Stop event bubbling
+            removeUrlFromLocalStorage(desc, url);
+            a.remove();
+        });
+
         const p = document.createElement("p");
         p.className = "mb-1";
         p.append(url);
 
-        header.append(h5);
+        header.append(h5, deleteBtn);
         a.append(header, p);
         
         return a;

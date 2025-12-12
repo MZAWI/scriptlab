@@ -41,7 +41,7 @@ export function addUrlToLocalStorage(text, url) {
   const normalizedUrl = new URL(url).href;
 
   let links = JSON.parse(localStorage.getItem("links")) || [];
-  links.push({ text, url: normalizedUrl });
+  links.push({ text: text, url: url });
 
   localStorage.setItem("links", JSON.stringify(links));
 }
@@ -52,10 +52,13 @@ export function addUrlToLocalStorage(text, url) {
 // removeUrlFromLocalStorage(taskLi);
 // gdzie taskLi to element listy (li) zawierający link do usunięcia
 
-export function removeUrlFromLocalStorage(taskLi) {
-  const text = taskLi.querySelector("input").value;
-  const url = taskLi.querySelector("a").href;
+export function removeUrlFromLocalStorage(text, url) {
   let links = JSON.parse(localStorage.getItem("links")) || [];
-  links = links.filter(link => !(link.text === text && link.url === url));
+  links = links.filter(link => link.text !== text || link.url !== url);
   localStorage.setItem("links", JSON.stringify(links));
+  // const text = taskLi.querySelector("input").value;
+  // const url = taskLi.querySelector("a").href;
+  // let links = JSON.parse(localStorage.getItem("links")) || [];
+  // links = links.filter(link => !(link.text === text && link.url === url));
+  // localStorage.setItem("links", JSON.stringify(links));
 }

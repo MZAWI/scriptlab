@@ -3,7 +3,7 @@ export async function fetchWarningsMeteo(){
     try {
         const response = await fetch(url);
         const warnings = await response.json();
-        if (warnings.status = "false") {
+        if (warnings.status === false) {
             throw new Error('No data to display');
         }
         return warnings;
@@ -13,7 +13,6 @@ export async function fetchWarningsMeteo(){
         const localWarnings = await localResponse.json();
         return localWarnings;
         }
-    }
 }
 
 export function renderWarningsMeteo(warnings) {

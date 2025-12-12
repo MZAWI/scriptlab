@@ -1,13 +1,12 @@
 export async function fetchWeatherIMGW(location) {
-    const url = "https://danepubliczne.imgw.pl/api/data/synop/station/" + location
     try {
+        const url = "https://danepubliczne.imgw.pl/api/data/synop/station/" + location
         const response = await fetch(url);
-        if (!response.ok) throw new Error(`Error: ${response.status}`);
-
         return await response.json();
     } catch (error) {
-        console.error("Error: ", error);
-        return null;
+        const response = await fetch("./DanePogoda_Zajęcia-6.json");
+        const data = await response.json();
+        return data;
     }; 
 }
 
